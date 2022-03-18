@@ -1,0 +1,30 @@
+name: tests
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Pip install
+        run: |
+          pip install -r requirements.txt
+          pip install -r dev-requirements.txt
+
+      - name: Run flake8
+        run: make flake8
+
+      - name: Run mypy
+        run: make mypy
+
+      - name: Run black
+        run: make black
+
+      - name: Run isort
+        run: make isort
+
+      - name: Run pytest
+        run: make pytest
