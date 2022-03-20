@@ -44,11 +44,9 @@ def test_tokenize_single_token():
     assert tokens[0] == Token("hello", 1, 1)
 
 
-"""
 def test_tokenize_2_tokens():
     tokens = tokenize("hello\n")
 
     assert len(tokens) == 2
     assert tokens[0] == Token("hello", 1, 1)
     assert tokens[1] == Token("\n", 1, 6)
-"""
