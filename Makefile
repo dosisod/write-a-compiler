@@ -14,4 +14,4 @@ isort:
 	isort . --diff
 
 pytest:
-	pytest test --cov --cov-report=html
+	pytest test --cov --cov-report=html --cov-report=term
