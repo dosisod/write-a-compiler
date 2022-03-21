@@ -58,3 +58,9 @@ def test_tokenize_many_tokens():
         Token(" ", 1, 6),
         Token("world", 1, 7),
     ]
+
+
+def test_tokenize_unknown_token():
+    tokens = tokenize("+")
+
+    assert tokens == [Token("+", 1, 1)]
