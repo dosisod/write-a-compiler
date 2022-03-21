@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum, auto
+from itertools import groupby
 from typing import Generator, List, NamedTuple, Optional
 
 
@@ -61,24 +62,9 @@ def tokenize(code: str) -> List[Token]:
 
     location_info = generate_location_info(code)
 
-    token_info: List[LocationInfo] = []
-    tokens: List[Token] = []
-    last_type: Optional[TokenType] = None
+    grouped = groupby(
+        location_info,
+        lambda info: char_to_token_type(info.char),
+    )
 
-    for info in location_info:
-        token_type = char_to_token_type(info.char)
-        assert token_type
-
-        if last_type and token_type != last_type:
-            tokens.append(create_token(token_info))
-            token_info = [info]
-
-        else:
-            token_info.append(info)
-
-        last_type = token_type
-
-    if len(token_info) > 0:
-        tokens.append(create_token(token_info))
-
-    return tokens
+    return [create_token(list(group[1])) for group in grouped]
