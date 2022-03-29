@@ -1,6 +1,7 @@
 attrs==21.4.0
 black==22.1.0
 click==8.0.4
+colorama==0.4.4
 coverage==6.3.2
 flake8==4.0.1
 iniconfig==1.1.1

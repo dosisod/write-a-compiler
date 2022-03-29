@@ -11,7 +11,7 @@ black:
 	black wac test -l 79 --check --diff --color
 
 isort:
-	isort . --diff
+	isort . --diff --check
 
 pytest:
 	pytest test --cov --cov-report=html --cov-report=term
