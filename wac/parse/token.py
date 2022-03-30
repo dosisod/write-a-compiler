@@ -81,11 +81,11 @@ def collapse_comment(tokens: List[Token]) -> List[Token]:
     in_comment = False
 
     for token in tokens:
-        if token.content == "#":
+        if token.type == TokenType.COMMENT:
             in_comment = True
 
         elif in_comment:
-            if token.content == "\n":
+            if token.type == TokenType.NEWLINE:
                 in_comment = False
 
             else:
