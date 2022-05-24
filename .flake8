@@ -1,2 +1,3 @@
 [flake8]
 exclude = .git,__pycache__,.venv
+ignore = F403,F405
