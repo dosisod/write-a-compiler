@@ -130,17 +130,17 @@ class UnaryExpr(Expr):
         return cls(type, oper, rhs)
 
 
-class Stmt(Node):
+class Stmt:
     pass
 
 
 @dataclass
-class VarDefStmt(Stmt):
+class VarDefStmtExpr(Stmt, Expr):
     name: str
     expr: Expr
 
 
 @dataclass
-class ModuleDefStmt(Stmt):
+class ModuleDefStmtExpr(Stmt, Expr):
     name: str
     stmts: Tuple[Stmt, ...]

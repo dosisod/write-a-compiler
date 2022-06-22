@@ -135,20 +135,21 @@ def test_create_unary_expr_auto_deduce_bool_type():
 def test_create_var_def_stmt():
     expr = IntExpr(1234)
 
-    var = VarDefStmt("x", expr)
+    var = VarDefStmtExpr("x", expr)
 
-    assert isinstance(var, Stmt)
-    assert isinstance(var, VarDefStmt)
+    assert isinstance(var, Expr)
+    assert isinstance(var, VarDefStmtExpr)
     assert var.name == "x"
     assert var.expr is expr
 
 
 def test_create_module_def_stmt():
-    stmt = VarDefStmt("x", IntExpr(1234))
+    var_def = VarDefStmtExpr("x", IntExpr(1234))
 
-    mod = ModuleDefStmt(stmts=(stmt,), name="some_module")
+    mod = ModuleDefStmtExpr(stmts=(var_def,), name="some_module")
 
     assert isinstance(mod, Stmt)
-    assert isinstance(mod, ModuleDefStmt)
+    assert isinstance(mod, Expr)
+    assert isinstance(mod, ModuleDefStmtExpr)
     assert mod.name == "some_module"
-    assert mod.stmts == (stmt,)
+    assert mod.stmts == (var_def,)
